@@ -29,7 +29,6 @@ function compare() {
     }
     clearInputBox();
 }
-
 function addHistory(numberGuess) {
     let node = document.createElement("LI");
     let listHistory = document.createTextNode(numberGuess);
@@ -44,6 +43,7 @@ function gameOver(timeGuess) {
     if (history.length === timeGuess) {
         console.log("Game over")
         document.getElementById("submit").disabled = true;
+        alert("Game over!")
     } else { document.getElementById("submit").disabled = false; }
 }
 function resetHistory() {
@@ -59,9 +59,18 @@ function validationInputNumber() {
         return false;
     }
 }
+// function checkDoubleNumber(input){
+//     for(i=0;i<history.length;i++){
+//         if (input == history[i]){
+//             alert("You have already choice this number!");
+//             return true;
+//         } else {return false}
+//     }
+// }
 
 document.getElementById('submit').addEventListener('click', function () {
     if (validationInputNumber()){
+        let input = document.getElementById('inputNumber').value;
         compare();
         gameOver(5);
     } else {

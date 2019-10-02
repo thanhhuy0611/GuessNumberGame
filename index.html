@@ -17,7 +17,7 @@
         <p class="lead">Choice a number from 1 to 100. You have 5 times to check.</p>
         <hr class="my-4">
         <p id="result" class="lead">There will are clue for you if you guess wrong!</p>
-        <ul id="history" class="lead"></ul>
+        <ol id="history" class="lead"></ol>
         <p class="lead">
             <div class="interface">
                 <button id="submit" class="btn btn-success btn-lg" role="button">Submit</button>
@@ -26,6 +26,9 @@
                         <span class="input-group-text" id="basic-addon1">Your number</span>
                     </div>
                     <input id="inputNumber" type="number" class="form-control">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Time</span>
+                    </div>
                 </div>
                 <button id="reset" class="btn btn-danger btn-lg" role="button">Reset</button>
             </div>
