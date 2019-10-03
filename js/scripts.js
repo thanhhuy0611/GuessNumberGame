@@ -1,5 +1,5 @@
 let key;
-function random(){
+function random() {
     key = Math.floor(Math.random() * 100) + 1;
     console.log(key);
 }
@@ -9,25 +9,27 @@ let history = [];
 //-------compare and add history------
 function compare() {
     let input = document.getElementById('inputNumber').value;
-    addHistory(input);
-    if (input != key) {
-        //--add history-------
-        history.push(input);
-        console.log(history);
-        //----------------------
-        if (input > key) {
-            document.getElementById('result').innerHTML = "Too high";
-        } else if (input < key) {
-            document.getElementById('result').innerHTML = "Too low";
+    if (checkDoubleNumber(input)) {
+        addHistory(input);
+        if (input != key) {
+            //--add history-------
+            history.push(input);
+            console.log(history);
+            //----------------------
+            if (input > key) {
+                document.getElementById('result').innerHTML = "Too high";
+            } else if (input < key) {
+                document.getElementById('result').innerHTML = "Too low";
+            }
         }
+        else if (input = key) {
+            document.getElementById('result').innerHTML = "Bingo";
+            resetHistory();
+            alert('You won!');
+            random();
+        }
+        clearInputBox();
     }
-    else if (input = key) { 
-        document.getElementById('result').innerHTML = "Bingo";
-        resetHistory();
-        alert('You won!');
-        random();
-    }
-    clearInputBox();
 }
 function addHistory(numberGuess) {
     let node = document.createElement("LI");
@@ -59,23 +61,35 @@ function validationInputNumber() {
         return false;
     }
 }
-// function checkDoubleNumber(input){
-//     for(i=0;i<history.length;i++){
-//         if (input == history[i]){
-//             alert("You have already choice this number!");
-//             return true;
-//         } else {return false}
-//     }
-// }
+function checkDoubleNumber(input) {
+    
+        if (input === history[0]) {
+            alert("You have already choice this number!");
+            return false;
+        }
+        else if (input === history[1]) {
+            alert("You have already choice this number!");
+            return false;
+        }
+        else if (input === history[2]) {
+            alert("You have already choice this number!");
+            return false;
+        } else if (input === history[3]) {
+            alert("You have already choice this number!");
+            return false;
+        }
+        return true;
+    console.log(double)
+}
 
 document.getElementById('submit').addEventListener('click', function () {
-    if (validationInputNumber()){
+    if (validationInputNumber()) {
         let input = document.getElementById('inputNumber').value;
         compare();
         gameOver(5);
     } else {
         alert('Please enter your number & it\'s greater than 0');
-    }    
+    }
 })
 document.getElementById('reset').addEventListener("click", function () {
     resetHistory();
